@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+		<title>XHAMSTER</title>
+
+		<link rel="stylesheet" href="loja.css">
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	</head>
+	
+	<body>
+		<div class='seccao' id='header'>
+			<img id='logo' src='images/xhamster.png'></img>
+			<div id='search'>
+				<form id='simple_search' action='search.html'>
+					<input type='text'></input>
+					<input type='submit' value='Search'></input>
+				</form>
+				<a id='advanced' href='advanced_search.html'>Advanced Search</a>
+			</div>
+		</div>
+		<div class="adapt">
+			<div class='seccao cat' id='categorias'>
+				<p><a href='#' id='selecionado'>Hamsters</a></p>
+				<p><a href='#'>Food</a></p>
+				<p><a href='#'>Toys</a></p>
+			</div>
+			<div class='prod seccao alinhamento' id='pesquisa_avancada'>
+				<form name='simple_search'>
+					<div>
+						<p>Description  
+						<input type="text" name="search"/></p>
+						<p>Category <select name="categorias">
+							<option disabled selected value> -- select an option -- </option>
+							<option value="hamster">Hamsters</option>
+							<option value="food">Hamster Food</option>
+							<option value="toy">Hamster Toys</option>
+						</select></p>
+						<p>Price range <input type="number" name="range"/> - <input type="number" name="range"/></p>
+						<p>Localization <select name="categorias">
+							<option disabled selected value> -- select an option -- </option>
+							<option value="Lisbon">Lisbon</option>
+							<option value="Porto">Porto</option>
+							<option value="Evora">Evora</option>
+						</select></p>
+						<p>Begin date <input type="date" name="date"/></p>
+						<p>End date <input type="date" name="date"/></p>
+					</div>
+					<input type='submit' name="submit" value='Search'/>
+					</div>
+				</form>
+			</div>	
+		</div>
+		<div class='seccao footer' id='footer'>
+			<a id='about' href='#'>About this page</a>
+		</div>
+	</body>
+</html>

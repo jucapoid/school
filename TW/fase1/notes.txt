@@ -1,0 +1,20 @@
+header:
+	overflow: auto - make the header wrap around the floating image instead of just the text
+	text-align: right - make the form and advanced_search align on the right
+	max-width: 100% - como pedido no enunciado a largura do header nunca ultrapassar a largura do dispositivo
+	
+
+logo:
+	float: left - make the logo appear on the left permiting the form and adv_search to be on its right side
+	width: 250px - make the logo the size it is asked on the work
+
+search:
+	display: inline-block - let the next item (adv_search) stay on the same line as the form
+
+advanced:
+
+Bugs:
+	Index - Comportamento da pagina - Footer nao se mantem no fim da pagina quando a pagina baixa dos 750px 
+	//Meter footer nas outras paginas após resolver o bug
+	Product - imagem mete-se por cima da div order
+	

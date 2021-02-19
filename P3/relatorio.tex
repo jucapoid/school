@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+
+\usepackage{multirow}
+\usepackage[margin=3cm]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\title{Relatório Trabalho Programação 3}
+\author{Luís Maurício - 37722\\Fábio Macarrão - 41895\\}
+\date{2020/2021}
+
+\begin{document}
+	\pagenumbering{gobble}
+	\maketitle
+
+	\newpage
+	\pagenumbering{arabic}
+	
+	\section{Estratégia}
+	\paragraph{}
+	Criámos uma função que vai testar todas as combinações possiveis, começa por fazer todas as combinações de tamanho 1 e se não encontrar uma palavra ambígua vai testar com todas as combinações de tamanho 2 e assim sucessivamente até que encontre a primeira palavra codificada ambígua.
+	\paragraph{}
+	O programa correrá infinitamente (até estourar a memória) caso não existam palavras ambiguas.
+	
+	\section{Escolhas}
+	\subsection{Linguagem}
+	\paragraph{}
+	A linguagem escolhida foi prolog.
+	A escolha foi motivada por ambos os membros do grupo já terem realizado as atividades das aulas práticas em prolog, logo era a linguagem em que o grupo estava mais à vontade de utilizar.
+	\section{Objectivos}
+	\subsection{eval/2}
+	\paragraph{}
+	Função recursiva que recebe um array e o conjunto de caracteres e devolve todas as combinações possiveis com os mesmos.
+	
+	Esta função não é da nossa autoria, foi retirada de \href{https://stackoverflow.com/questions/43102965/prolog-how-to-create-all-possible-permutations-with-repetition-give-a-list-of-o}{Prolog: How to create all possible permutations with repetition give a list of objects}
+	\subsection{myPermutation/3}
+	\paragraph{}
+	Função que recebe um número (tamanho das combinações a retornar) e um conjunto de caracteres e vai verificar se existem combinações desse tamanho com a função eval. Atribui à última variável a lista de todas as combinações de tamsnho pretendido.
+	
+	Esta função não é da nossa autoria, foi retirada de \href{https://stackoverflow.com/questions/43102965/prolog-how-to-create-all-possible-permutations-with-repetition-give-a-list-of-o}{Prolog: How to create all possible permutations with repetition give a list of objects}
+	\subsection{del/3}
+	\paragraph{}
+	Função recursiva que recebe dois arrays, eliminando o primeiro array do segundo mas apenas se o primeiro for prefixo do segundo.
+	\newpage
+	\subsection{check/5}
+	\paragraph{}
+	Função que recebe 4 vatiáveis:
+	\begin{description}
+		\addtolength{\itemindent}{0.80cm}
+		\itemsep0em 
+		\item[1ª.]Todas as letras do alfabeto que já foram confirmadas não ser prefixo do código a ser testado.
+		\item[2ª]O tuplo com a letra atualmente a ser testada como prefixo do código.
+		\item[3ª.] O resto do alfabeto ainda por testar.
+		\item[4ª.] Aray que representa a palavra codificada que está a ser testada contra o alfabeto.
+	\end{description}
+	Esta função retorna uma palavra descodificada que corresponde a uma possível leitura do código testado, no caso de não haver possíveis leituras responde \textit{false}.
+	\subsection{checkperms/3}
+	\paragraph{}
+	Função que recebe o alfabeto e uma lista de combinações de tamanho fixo obtida chamando a função myPermutation.
+	
+	Circulando nessa lista, utiliza o \textit{findall/3} para criar uma lista de possíveis leituras do código atualmente a ser testado, e se essa lista tiver pelo menos 2 elementos retorna uma lista com o código ambíguo e 2 possíveis leituras desse código.
+
+	\subsection{start/3}
+	\paragraph{}
+	Função recebe um número e o alfabeto.
+	Com o resultado da função myPermutation chama a função checkperms, caso não haja nenhum código ambíguo na lista tenta todas as combinações com mais um caracter de comprimento.
+
+	\subsection{ambiguo/4}
+	\paragraph{}
+	Função que recebe appenass oo alfabeto. Com esse alfabeto chama a função start/3 com o tamnho 1.
+	Retorna o código menor que seja ambíguo e duas posssíveis interpretações desse código.
+	
+\end{document}

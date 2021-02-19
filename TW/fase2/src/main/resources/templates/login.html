@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+	       	<title>XHAMSTER</title>
+		<link rel="stylesheet" href="loja.css">
+	       	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    	</head>
+    
+	<body>
+		<div class='seccao' id='header'>
+	    		<a href="/"><img id='logo' src='images/xhamster.png'/></a>
+			<div id='search'>
+		   		<form id='simple_search' action='search'>
+		    			<input type='text' name='produtos' />
+		    			<input type='submit' value="Search"/>
+				</form>
+				<a id='advanced' href='advanced_search'>Advanced Search</a>
+				<div th:if="${user}" name='areaCliente' >
+					<form action="/list-order">
+						<input type="submit" th:value="${user}" id="login"/>
+					</form>
+		    			<form action="/logout" method="post">
+						<input type="submit" value="Logout" id="login">
+					</form>
+				</div>
+				<div th:unless="${user}" name='areaCliente' >
+					<form action="/login">
+						<input type="submit" value="Login" id="login"/>
+					</form>
+					<form action="/new-user">
+						<input type="submit" value="Register" id="login"/>
+					</form>
+				</div>
+	    		</div>
+		</div>
+		<div class="adapt">
+	    	<div class='seccao' id='categorias'>
+				<form th:if="${auth}" action="/new-product" method="get">
+					<input id="login" type="submit" value="Add Product"/>
+				</form>
+				<form th:if="${auth}" action="/del-product" method="get">
+					<input id="login" type="submit" value="Delete Product"/>
+				</form>
+				<form action="/advanced_search" method="POST">
+					<input type="hidden" name="categorias" value="hamster"/>
+					<input id="login" type="submit" value="Hamsters"/>
+				</form>
+				<form action="/advanced_search" method="post">
+					<input type="hidden" name="categorias" value="food"/>
+					<input id="login" type="submit" value="Food"/>
+				</form>
+				<form action="/advanced_search" method="post" id="toys">
+					<input type="hidden" name="categorias" value="toys"/>
+					<input id="login" type="submit" value="Toys"/>
+				</form>
+			</div>
+	    		<div class='prod center' id='produtos' name='produtos'>
+				<div th:if="${param.error}">
+		    			Invalid username and password.
+				</div>
+				<div th:if="${param.logout}">
+		    			You have been logged out.
+				</div>
+
+				<form action="/login" method="post">
+		    			<div><label> User Name : <input type="text" name="username"/> </label></div>
+		    			<div><label> Password: <input type="password" name="password"/> </label></div>
+		    			<div><input type="submit" value="Sign In"/></div>
+				</form>
+	     		</div>
+		</div> 
+		<div class='seccao footer' id='footer'>
+			<a id='about' href='#'>About this page</a>
+		</div>
+    	</body>
+</html>
