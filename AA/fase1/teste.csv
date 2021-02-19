@@ -1,0 +1,12 @@
+lenght,gills,beak,teeth,class
+3,no,yes,many,+
+4,no,yes,many,+
+3,no,yes,few,+
+5,no,yes,many,+
+5,no,yes,few,+
+5,yes,yes,many,-
+4,yes,yes,many,-
+5,yes,no,many,-
+4,yes,no,many,-
+4,no,yes,few,-
+
